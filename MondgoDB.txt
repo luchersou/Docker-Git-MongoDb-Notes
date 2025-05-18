@@ -1,0 +1,150 @@
+Criar o banco de dados:
+
+db.developers.insertMany([
+  {"nome": "Ana Souza", "email": "ana.souza@email.com", "idade": 28},
+  {"nome": "Carlos Mendes", "email": "carlos.mendes@email.com", "idade": 32},
+  {"nome": "Juliana Lima", "email": "juliana.lima@email.com", "idade": 24}
+])
+
+====================================
+
+Mostrar banco de dados disponíveis
+show databases
+
+Criar um banco de dados- se o banco de dados testet não existe, ele será criado
+use testet
+
+Entrar no banco de dados(use o nome do seu banco de dados ao inves de test2- pode entrar em outro banco de dados mesmo se ja estiver dentro de um)
+use test2
+
+Criar collection- precisa estar dentro do banco de dados de sua escolha
+db.createCollection("nome da collection")
+
+Mostrar collections- precisa estar dentro do banco de dados de sua escolha
+show collections
+
+Derrubar uma collection- coleque o nome da sua collection no lugar de testeteste
+db.testeteste.drop()
+
+Derrubar o banco de dados- tem que estar dentro do banco de dados
+db.dropDatabase
+
+Inserir dados uma collection- no lugar dedevelopers coloque o nome da sua collection
+db.developers.insertOne({"nome": "Ana Souza", "email": "ana.souza@email.com", "idade": 28})
+
+Inserir varias collections no banco de dados developers
+db.developers.insertMany([{"nome": "Ana Souza", "email": "ana.souza@email.com", "idade": 28},{"nome": "Carlos Mendes", "email": "carlos.mendes@email.com", "idade": 32},{"nome": "Juliana Lima", "email": "juliana.lima@email.com", "idade": 24}])
+
+Faz com que apareça todos os dados da collection
+db.developers.find()
+
+Retorna o dado que voce gostaria
+db.developers.find({nome: "Carlos Mendes"})
+db.developers.find({idade: 32})
+
+Retorna o ID e o nome de todos no banco de dados
+db.developers.find({}, {nome: true})
+
+Retorna os dados que voce esta pedindo
+db.developers.find({}, {_id: false, nome: true, email:true})
+
+Fazer com que os dados "nome" sejam printados em ordem alfabetica- também da para usar o -1, para que aparecem na ordem inversa a da alfabetica
+db.developers.find().sort({nome: 1})
+
+Limitar a quantidade de informação que aparece na tela
+db.developers.find().limit(1)
+
+Fazer com que apenas o primeiro elemento apareça na tela, com o criterio de que ele seja em ordem alfabetica
+db.developers.find().sort({nome: 1}).limit(1)
+
+Atualiza apenas 1 dado- no caso a idade da pessoa que tem o nome Carlos Mendes
+db.developers.updateOne({nome: "Carlos Mendes"}, {$set:{idade: 30}})
+
+Atualizar através do ID
+db.developers.updateOne({_id: ObjectId("67f91d4aa4e34b2f50b5f89b")}, {$set:{idade: 26}})
+
+Remover um campo- nesse caso a idade da pessoa cujo ID esta abaixo
+db.developers.updateOne({_id: ObjectId("67f91d4aa4e34b2f50b5f89b")}, {$unset:{idade:""}})
+
+Remover o campo idade do objeto cujo nome esta abaixo
+db.developers.updateOne({nome: "Juliana Lima"}, {$unset:{idade:""}})
+
+Adicionar um campo na collection
+db.developers.updateMany({}, {$set:{fulltime:false}})
+
+Remover o campo "fulltime" da pessoa abaixo
+db.developers.updateOne({nome: "Carlos Mendes"}, {$unset:{fulltime:""}})
+
+Adiciona o campo fulltime:true apenas para aqueles que não tiverem o campo fulltime
+db.developers.updateMany({fulltime:{$exists:false}}, {$set:{fulltime:true}})
+
+Deletar o objeto cujo nome esta abaixo
+db.developers.deleteOne({nome: "Juliana Lima"})
+
+Deletar todos os que tiverem o campo fulltime como false
+db.developers.deleteMany({fulltime:"false"})
+
+Deletar todos os objetos que não tiverem o campo fulltime- porque o parametro é false
+db.developers.deleteMany({fulltime:{$exists:false}})
+
+Localizar todos que não tenham o nome que esta abaixo
+db.developers.find({nome:{$ne:"Ana Souza"}})
+
+Localizar todos que tenham idade menor que 29- pois lt=less than
+db.developers.find({idade:{$lt:29}})
+
+Localizar todos que tenham idade menor que 28, mas o 28 esta incluso na busca- lte= less than equal
+db.developers.find({idade:{$lte:28}})
+
+Localizar todos que tenham idade maior que 29- pois gt= greater than
+db.developers.find({idade:{$gt:29}})
+
+Localizar todos que tenham idade maior que 30, mas o 30 esta incluso- pois gte= greater than equal
+db.developers.find({idade:{$gt:30}})
+
+Localizar todos que tenham idade entre 29 e 31, do qual 29 não esta incluido mas 31 esta
+db.developers.find({idade:{$gt:29, $lte:31}})
+
+Localizar todos que tenham o seguinte parametro
+db.developers.find({nome:{$in:["Ana Souza", "Carlos Mendes"]}})
+
+Localizar todos que não tenham o seguinte parametro
+db.developers.find({nome:{$nin:["Ana Souza", "Carlos Mendes"]}})
+
+Localizar todos os que tenham os 2 dados mencionados abaixo, fulltime:false e idade <=29
+db.developers.find({$and: [{fulltime:false}, {idade:{$lte:29}}]})
+
+Localizar quando pelo menos 1 dos parametros for verdadeiro
+db.developers.find({$or: [{fulltime:false}, {idade:{$lte:30}}]})
+
+Localizar quando ambas não forem encontradas
+db.developers.find({$nor: [{fulltime:false}, {idade:{$lte:30}}]})
+
+Localizar todos que não tiverem idade >= 30
+db.developers.find({idade:{$not:{$gte:30}}})
+
+Ver log
+db.developers.find({nome: "Ana Souza"}).explain("executionStats")
+
+Cria um indice
+db.developers.createIndex({nome: 1})
+
+Ver indices
+db.developers.getIndexes()
+
+Dropar um indice- coloque o nome do indice no lugar de nome_1
+db.developers.dropIndex("nome_1")
+
+--------------
+Criar collections com parametros- se colocar o capped como true, é necessário especificar o size, se colocar apenas db.createCollection("teachers") será como se o capped é false
+db.createCollection("teachers", {capped: true, size: 1000000, max: 100}, { autoIndexId: false })
+
+#size: 1000000
+Define o tamanho máximo da coleção em bytes.
+
+Neste exemplo, a coleção pode ter até 1.000.000 bytes (cerca de 1 MB) de dados no total.
+
+#max: 100
+Define o número máximo de documentos que a coleção pode conter.
+
+Quando esse número é atingido, o documento mais antigo será substituído por um novo automaticamente, ou seja, sobrescreve.

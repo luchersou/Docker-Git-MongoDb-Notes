@@ -1,0 +1,46 @@
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+
+git checkout main       # Muda para a branch main
+git merge feature       # Integra as mudanças da branch feature em main
+
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main              # Muda o nome da branch atual para main
+git remote add origin https://github.com/luchersou/Java-DSA-OOP.git
+git push -u origin main
+
+
+======
+
+git remote -v       # Saber em qual repositorio remoto sua branch esta conectada
+git branch -a       # Ver todas as branches
+git checkout d1709e       # Muda para a branch main
+git diff       # Ver diferenças entre como estava e como o código esta agora
+
+git checkout main       # Muda para a branch main
+git merge feature       # Integra as mudanças da branch feature em main
+git branch -r       # Ver branches remotas
+git branch -a       # ver todas as branches
+git log       #Ver commits
+git branch
+
+#Dar pull em pasta vazia
+git remote add origin https://github.com/luchersou/Java-DSA-OOP.git
+git pull origin main
+
+
+
+====
+crie um arquivo com o nome abaixo e coloque dentro dele os arquivos-nome exato- que apenas voce quer ver ou fazer anotações, para que não seja dado commit ou visualizado por outras pessoas
+.gitignore
+
+da forma abaixo voce ignora todos os arquivos com aquela extensão
+*.obj
+*.html
+====
+
+
+
+
