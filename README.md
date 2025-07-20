@@ -1,12 +1,12 @@
-# 📝 Anotações de Estudo - Git & MongoDB
+# 📝 Anotações de Estudo - Git, MongoDB e Docker
 
-Este repositório contém minhas anotações pessoais sobre **Git** e **MongoDB**, baseadas em cursos e pesquisas.
+Este repositório contém minhas anotações pessoais sobre **Git**, **MongoDB** e **Docker**, baseadas em cursos e pesquisas.
 
 ## 📂 Conteúdo
 
 ### 1. **Anotações de MongoDB**  
    - Comandos essenciais e exemplos práticos
-   - Aprendizados do [curso do Bro Code](https://www.youtube.com/watch?v=c2M-rlkkT5o&t=3430s)
+   - Aprendizados do curso no youtube chamado [Bro Code](https://www.youtube.com/watch?v=c2M-rlkkT5o&t=3430s)
    - Tópicos:
      - CRUD (create, read, update, delete)
      - Operadores de consulta ($set, $push, etc.)
@@ -19,7 +19,17 @@ Este repositório contém minhas anotações pessoais sobre **Git** e **MongoDB*
    - Resolução de conflitos
    - Comandos úteis do terminal
 
-### 3. **Guia Profissional**  
+### 3. Anotações de Docker
+   - Comandos principais do Docker
+   - Resumos sobre tópicos importantes para desenvolvedores
+   - Tópicos:
+       - Conceitos básicos de contêineres e imagens
+       - Dockerfile e construção de imagens
+       - Gerenciamento de contêineres (criação, execução, parada)
+       - Redes e volumes no Docker
+       - Docker Compose para orquestração de múltiplos contêineres
+
+### 4. **Guia Profissional**  
    - Boas práticas com Git
    - Padrões de commit semântico
    - Otimização de queries no MongoDB
