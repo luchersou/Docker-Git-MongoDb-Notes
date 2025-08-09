@@ -40,4 +40,4 @@ Este repositório contém minhas anotações pessoais sobre **Git**, **MongoDB**
 - Para os guias completos, **baixe os PDFs** disponíveis na pagina inicial
 - Ou clone o repositório:  
   ```bash
-  git clone https://github.com/seu-usuario/seu-repositorio.git
+  git clone https://github.com/luchersou/docker-git-mongodb-notes.git
